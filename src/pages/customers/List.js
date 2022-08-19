@@ -37,7 +37,7 @@ const Customers = () => {
 
     
     const handleRemoveCustomer = id => {
-        axios.delete(`https://regres.in/api/users/${id}`) 
+        axios.delete(`https://reqres.in/api/users/${id}`) 
         .then(() => { 
             const newCustomersState = customers.filter(customer => customer.id !==id)
 

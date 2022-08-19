@@ -21,8 +21,6 @@ const CustomersEdit = () => {
 
     const {id} = useParams()
 
-    const [user, setUser] = useState({})
-
     const [ form, setForm ] = useState({name: {
         value: '',
         error: false,
@@ -77,7 +75,8 @@ const CustomersEdit = () => {
         }
         if (!form.name.value) {
             hasError = true
-
+            
+            setLoading(false)
            newFormState.name = {
             value: form.name.value,
             error: true,
@@ -86,7 +85,8 @@ const CustomersEdit = () => {
         }
         if (!form.job.value) {
             hasError = true
-
+            
+            setLoading(false)
             newFormState.job = {
                 value: form.job.value,
                 error: true,

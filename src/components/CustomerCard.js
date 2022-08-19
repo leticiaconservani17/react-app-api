@@ -48,7 +48,7 @@ const CustomerCard = ({
   }
 
   const handleEditCustomer = id => {
-    onEditCustomer()
+    onEditCustomer(id)
   }
 
 
@@ -65,11 +65,11 @@ const CustomerCard = ({
           subheader = {email}
         />
         <CardActions disableSpacing>
-          <IconButton aria-label="Remover" onClick={handleRemoveCustomer}>
-            <DeleteIcon />
-          </IconButton>
           <IconButton aria-label="Editar Cadastro" onClick={() => handleEditCustomer(id)}>
             <EditIcon />
+          </IconButton>
+          <IconButton aria-label="Remover" onClick={handleRemoveCustomer}>
+            <DeleteIcon />
           </IconButton>
         </CardActions>
       </Card>

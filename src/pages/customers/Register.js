@@ -31,7 +31,7 @@ const CustomersRegister = () => {
 
     const [ openToasty, setOpenToasty ] = useState(false)
 
-    const [ loading, setLoading ] = useState(false)
+    let [ loading, setLoading ] = useState(false)
 
     const handleInputChange = (e) => {
         const {name, value} = e.target
@@ -53,7 +53,8 @@ const CustomersRegister = () => {
         }
         if (!form.name.value) {
             hasError = true
-
+            
+            setLoading(false)
            newFormState.name = {
             value: form.name.value,
             error: true,
@@ -62,7 +63,8 @@ const CustomersRegister = () => {
         }
         if (!form.job.value) {
             hasError = true
-
+            
+            setLoading(false)
             newFormState.job = {
                 value: form.job.value,
                 error: true,
@@ -73,6 +75,7 @@ const CustomersRegister = () => {
         if (hasError){
             return setForm(newFormState)
         }
+
 
         axios.post('https://reqres.in/api/users', {
             name: form.name.value,
