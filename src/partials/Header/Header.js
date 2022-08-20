@@ -23,7 +23,7 @@ import * as React from 'react'
 
 import useStyles from './Header.style'
 
-const Header = () => {
+const Header = ({ user }) => {
     const classes = useStyles()
     const history = useHistory()
     const [ menuOpen, setMenuOpen ] = useState(false)
@@ -37,6 +37,10 @@ const Header = () => {
         handleToggleMenu()
     }
 
+    const handleLoginClick = route => {
+        history.push(route)
+    }
+
     return(
         <>
                 <AppBar position="static">
@@ -45,9 +49,12 @@ const Header = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        News
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    {
+                        user.logged
+                        ? <Typography variant="h6">{user.email}</Typography>
+                        : <Button color="inherit" onClick={() => handleLoginClick('/login')}>Login</Button>
+                    }
                     </Toolbar>
                 </AppBar>
                 <Drawer open={menuOpen} onClose={() => handleToggleMenu()}>

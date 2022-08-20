@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 
 import './index.css'
 
+import { AuthProvider } from './state/Auth'
+
 import {purple, red} from '@material-ui/core/colors'
 
 const theme = createTheme({
@@ -21,6 +23,8 @@ const theme = createTheme({
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <ThemeProvider theme={theme}>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ThemeProvider>
 )
